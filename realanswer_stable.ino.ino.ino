@@ -10,6 +10,10 @@ Sketch to play music when fluid is detected and change LED colors
 Based on Adafruit examples and amazing support.  Thanks!
 adapted from https://forums.adafruit.com/viewtopic.php?f=31&t=79525&p=402768&hilit=+music+maker+music+maker+trigger#p402768
 random seed idea from https://forums.adafruit.com/viewtopic.php?f=31&t=60742
+-Connect the red wire to +5V, 
+-the black wire to common ground 
+-and the yellow sensor wire to pin #2
+connect the neopixel to pin #5
 *****************************************************************************/
 
 #define BREAKOUT_RESET  9      // VS1053 reset pin (output)
@@ -24,7 +28,7 @@ random seed idea from https://forums.adafruit.com/viewtopic.php?f=31&t=60742
 //++++++++led stuff+++++++++++
 
 #define PIN = 5 //this is the neopixel data pin
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, 5, NEO_GRB + NEO_KHZ800); //  initializes neopixels
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, 5, NEO_RGB + NEO_KHZ800); //  initializes neopixels
 
 
 
@@ -165,7 +169,7 @@ if (sensorVal < 7) { //no fluid detected
   Serial.println(sensorVal);
 
   //+++++++++ set pixels to normal color+++++++++++++++
-  strip.setPixelColor(1, 255, 0, 255); // turn the leds the color you want. pixel, r, g, b
+  strip.setPixelColor(0, 255, 69, 0); // turn the leds the color you want. pixel, r, g, b
   strip.show();
   //sensorVal = analogRead(sensorPin);
   //&&&&&&&this delay may be too short&&&&&&&&
@@ -196,7 +200,7 @@ Serial.print("Fluid detected!  SensorVal is: "); Serial.println(sensorVal);
 
 while (musicPlayer.playingMusic) {
   
-  strip.setPixelColor(1, 255, 0, 255); // turn the leds the color you want. pixel, r, g, b
+  strip.setPixelColor(0, 255, 0, 0); // turn the leds the color you want. pixel, r, g, b
   strip.show();
 } //end of while playing music loop
 
