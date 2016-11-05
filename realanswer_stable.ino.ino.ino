@@ -28,7 +28,8 @@ connect the neopixel to pin #5
 //++++++++led stuff+++++++++++
 
 #define PIN = 5 //this is the neopixel data pin
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, 5, NEO_RGB + NEO_KHZ800); //  initializes neopixels
+//first number is the number of neopixels
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(4, 5, NEO_RGB + NEO_KHZ800); //  initializes neopixels. 
 
 
 
@@ -164,12 +165,16 @@ Serial.println();
 //**************NO FLUID********************
 //************************************************
 // going to want to make this untriggered state 
-if (sensorVal < 7) { //no fluid detected
+if (sensorVal < 6) { //no fluid detected
   Serial.print("No fluid detected.  SensorVal is: ");   
   Serial.println(sensorVal);
 
   //+++++++++ set pixels to normal color+++++++++++++++
+  //all of the pixels go here
   strip.setPixelColor(0, 255, 69, 0); // turn the leds the color you want. pixel, r, g, b
+  strip.setPixelColor(1, 255, 69, 0);
+  strip.setPixelColor(2, 255, 69, 0);
+  strip.setPixelColor(3, 255, 69, 0);
   strip.show();
   //sensorVal = analogRead(sensorPin);
   //&&&&&&&this delay may be too short&&&&&&&&
@@ -184,7 +189,7 @@ if (sensorVal < 7) { //no fluid detected
 //**************FLUID DETECTED**********************
 //************************************************
 
-if (sensorVal > 6) { //fluid is detected
+if (sensorVal > 5) { //fluid is detected
 Serial.print("Fluid detected!  SensorVal is: "); Serial.println(sensorVal);
 
   //This starts playing a random song
@@ -201,6 +206,9 @@ Serial.print("Fluid detected!  SensorVal is: "); Serial.println(sensorVal);
 while (musicPlayer.playingMusic) {
   
   strip.setPixelColor(0, 255, 0, 0); // turn the leds the color you want. pixel, r, g, b
+  strip.setPixelColor(1, 255, 0, 0);
+  strip.setPixelColor(2, 255, 0, 0);
+  strip.setPixelColor(3, 255, 0, 0);
   strip.show();
 } //end of while playing music loop
 
