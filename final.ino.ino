@@ -132,7 +132,7 @@ void setup() {
   printDirectory(SD.open("/"), 0);
   
   // Set volume for left, right channels. lower numbers == louder volume!
-  musicPlayer.setVolume(10,10);
+  musicPlayer.setVolume(5,5);
 
   if (! musicPlayer.useInterrupt(VS1053_FILEPLAYER_PIN_INT))
     Serial.println(F("DREQ pin is not an interrupt pin"));
@@ -165,7 +165,7 @@ Serial.println();
 //**************NO FLUID********************
 //************************************************
 // going to want to make this untriggered state 
-if (sensorVal < 6) { //no fluid detected
+if (sensorVal < 4) { //no fluid detected
   Serial.print("No fluid detected.  SensorVal is: ");   
   Serial.println(sensorVal);
 
@@ -189,7 +189,7 @@ if (sensorVal < 6) { //no fluid detected
 //**************FLUID DETECTED**********************
 //************************************************
 
-if (sensorVal > 5) { //fluid is detected
+if (sensorVal > 3) { //fluid is detected
 Serial.print("Fluid detected!  SensorVal is: "); Serial.println(sensorVal);
 
   
